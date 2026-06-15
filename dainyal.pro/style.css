@@ -1,0 +1,9 @@
+img{
+     width:100px;
+  height:180px;
+  object-fit:cover;
+  border:4px solid black;
+  box-shadow:6px 6px 0 black;
+  margin-bottom:15px;
+  background-size: cover;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo Brutalism Economic Navbar</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f4f4;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    background:#FFD84D;
+    border:4px solid black;
+    box-shadow:6px 6px 0 black;
+}
+
+/* LOGO */
+.logo{
+    font-size:22px;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+/* MENU */
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:15px;
+}
+
+.nav-links li a{
+    text-decoration:none;
+    color:black;
+    font-weight:800;
+    padding:8px 15px;
+    border:3px solid black;
+    background:white;
+    box-shadow:4px 4px 0 black;
+    transition:0.2s;
+}
+
+/* HOVER */
+.nav-links li a:hover{
+    background:#00E0B8;
+    transform:translate(2px,2px);
+    box-shadow:2px 2px 0 black;
+}
+
+/* SEARCH */
+.search-box{
+    padding:8px;
+    border:3px solid black;
+    box-shadow:4px 4px 0 black;
+    font-weight:bold;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .nav-links{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        flex-direction:column;
+        background:#FFD84D;
+        padding:20px 0;
+        border-top:4px solid black;
+        display:none;
+    }
+};
+.nav-links.active{
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .search-box{
+        display:none;
+    }
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">EconoX</div>
+
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Markets</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <input type="text" class="search-box" placeholder="Search...">
+</nav>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

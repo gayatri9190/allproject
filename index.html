@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-list</title>
+    <style>
+        body{
+        font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            
+            height: auto;
+            width: auto;
+            border: 1px solid gray;
+        }
+        input{
+            padding: 8px;
+            width: 200px;
+        }
+        button{
+            padding: 8px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        li{
+            list-style: none;
+            margin: 10px;
+            font-size: 18px;
+        }
+        button{
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo list</h1>
+    <input type="text" id="taskinput" placeholder="enter your task">
+    <button onclick="addtask()">Add</button>
+   <button onclick="clearall()">Clearall</button>
+    <ul id="tasklist">tasklist</ul>
+ 
+<script>
+    
+     window.onload=function(){
+    let savetask=
+    localStorage.getItem("tasks");
+    if(savetask){
+        document.getElementById("tasklist").innerHTML=savetask;
+       
+    }
+   };
+  function addtask(){
+   
+    let task=
+    document.getElementById("taskinput").value;
+    if(task===""){
+        alert("enter your task");
+    }
+    let li=
+    document.createElement("li");
+    li.innerText=task;
+    li.onclick=function(){
+        li.style.textDecoration="line-through";
+     li.style.color="green"
+    }
+    let deletebtn=
+    document.createElement("button");
+    deletebtn.innerText="delete";
+    deletebtn.onclick=function(event){
+         event.stopPropagation();
+        li.remove();
+        
+    };
+    li.appendChild(deletebtn);
+    document.getElementById("tasklist").appendChild(li);
+    document.getElementById("taskinput").value="";
+    attachEvents();
+     savedata();
+    function attachEvents(){
+        let alltask=
+        document.querySelectorAll("li");
+        alltask.forEach(function(li){
+            li.onclick=function(){
+        li.style.textDecoration="line-through";
+     li.style.color="green";
+     
+     savedata();
+            
+    };
+    let deletebtn=
+    li.querySelector("button");
+     deletebtn.onclick=function(event){
+         event.stopPropagation();
+        li.remove();
+        savedata();
+    };
+
+        });
+    }
+    
+    function savedata(){
+localStorage.setItem("tasks",document.getElementById("tasklist").innerHTML);
+    }
+    
+  }
+  document.getElementById("taskinput").addEventListener("keypress",function(event){
+    if(event.key==="enter"){
+        addtask();
+    }
+  })
+  function clearall(){
+    document.getElementById("tasklist").innerHTML="";
+     
+    savedata();
+  }
+ 
+    </script>
+</body>
+</html>

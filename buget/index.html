@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tracker budget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Budget Tracker</h1>
+    <div class="balance">
+      <h2>Your Balance</h2>
+      <p id="totalbalance">$0.00</p>
+    </div>
+    <div class="summary">
+      <div class="income">
+        <h3>Income</h3>
+        <p id="totalincome">$0.00</p>
+      </div>
+      <div class="expanse">
+        <h3>Expanse</h3>
+        <p id="totalexpanse">$0.00</p>
+      </div>
+    </div>
+    <h2>Add Transaction</h2>
+    <form id="Transactioncm">
+      <input type="text" id="description" placeholder="Description" required>
+      <input type="number" id="amount" placeholder="Amount" required>
+
+      <div class="radio-buttons">
+        <label>
+          <input type="radio" name="type" value="income"  checked>Income
+        </label>
+        <label>
+          <input type="radio" name="type" value="expansce">Expanse
+        </label>
+      </div>
+         <button type="submit">Add Transaction</button>
+      </form>
+         <h2>History</h2>
+         <ul id="transactionlist"></ul>
+      </div>
+     
+    <script src="web.js"></script>
+</body>
+</html>

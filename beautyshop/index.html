@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Beauty Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body{font-family:'Poppins',sans-serif;margin:0;background:#fff0f5}
+header{background:linear-gradient(90deg,#ff6f91,#ff9671);color:white;padding:20px;text-align:center}
+nav a{color:white;margin:10px;text-decoration:none;font-weight:500}
+section{padding:20px}
+.hero{
+  background:linear-gradient(120deg,#ffe5ec,#ffc2d1);
+  padding:40px;
+  text-align:center;
+  border-radius:0 0 40px 40px;
+}
+
+.hero h1{
+  font-size:28px;
+  font-weight:700;
+}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.card{
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  padding:12px;
+  text-align:center;
+  transition:0.3s;
+   box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:15px;
+   box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.price{
+  color:#ff4d6d;
+  font-weight:700;
+  font-size:16px;
+}
+button{
+  background:linear-gradient(90deg,#ff4d6d,#ff758c);
+  color:white;
+  border:none;
+  padding:10px;
+  border-radius:25px;
+  margin:5px;
+  cursor:pointer;
+  font-weight:500;
+  transition:0.3s;
+}
+
+button:hover{
+  opacity:0.85;
+}
+input{width:95%;padding:10px;margin:5px;border-radius:10px;border:1px solid #ccc}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;justify-content:center;align-items:center}
+.modal-content{
+  background:#fff;
+  padding:20px;
+  border-radius:25px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  max-height:90vh;
+  overflow:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+.footer{background:#111;color:white;text-align:center;padding:15px;margin-top:20px}
+.cart{position:fixed;top:10px;right:10px;background:black;color:white;padding:10px;border-radius:20px}
+.login-box{max-width:300px;margin:40px auto;text-align:center}
+.admin{display:none}
+#modalContent{
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.iconBox {
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+  color:white;
+  font-size:18px;
+  transition:0.3s;
+  backdrop-filter: blur(5px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="cart" onclick="viewCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+
+<header>
+ 
+<div style="position:relative; padding:10px;">
+
+  <!-- LOGO (side me) -->
+  <!-- <img src="makup.jpg" style="
+    position:absolute;
+    left:10px;
+    top:4px;
+    height:40px;
+    width:60px;
+    object-fit:cover;
+    border-radius:50%;
+     box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  "> -->
+<h2>Luxury Beauty Shop</h2>
+  <!-- <h2>Luxury Beauty Shop</h2> -->
+
+</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+<a href="#admin">Admin</a>
+</nav>
+</header>
+
+<div class="hero" id="home">
+<h1>Glow Like Never Before ✨</h1>
+<p>Premium beauty products for your perfect look</p>
+</div>
+
+<section id="products">
+<h3>Our Products</h3>
+<div class="products" id="productList"></div>
+</section>
+
+<!-- LOGIN PAGE -->
+<section id="admin">
+<div class="login-box" id="loginBox">
+<h3>Admin Login</h3>
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+</div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section class="admin" id="adminPanel">
+<h3>Admin Panel</h3>
+<input id="name" placeholder="Product Name">
+<input id="price" placeholder="Price">
+<input id="image" placeholder="Image URL">
+<input id="desc" placeholder="Product Description">
+<button onclick="addProduct()">Add Product</button>
+<button onclick="logout()">Logout</button>
+</section>
+
+<section id="about">
+<h3>About Us</h3>
+<p>We bring luxury beauty products with premium quality.</p>
+</section>
+
+<section id="contact">
+<h3>Contact Us</h3>
+<p>Phone: +91 7986005320</p>
+<p>Email: gk2334319@gmail.com</p>
+</section>
+
+<div class="modal" id="modal">
+<div class="modal-content" id="modalContent"></div>
+</div>
+
+<!-- <div class="footer">
+<p>© 2026 Luxury Beauty</p>
+</div> -->
+<footer style="
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:30px 20px;
+  margin-top:40px;
+">
+
+  <h2 style="margin:0; color:#ff6f91;">Luxury Beauty Shop</h2>
+
+  <p style="margin:10px 0; color:#ccc;">
+    Where beauty meets elegance — discover your glow with us.
+  </p>
+
+  <!-- ICONS -->
+  <div style="margin:15px 0; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+ <!-- Instagram -->
+  <a href="https://instagram.com/ranzer._.20x" target="_blank" style="color:rgb(168, 60, 132); font-size:22px;" class="iconBox">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917986005320" target="_blank" style="color:rgb(14, 143, 21); font-size:22px;"class="iconBox">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Email -->
+  <a href="mailto:gk2334319@gmail.com" style="color:rgb(199, 203, 212); font-size:22px;" class="iconBox">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <!-- Location -->
+  <a href="https://maps.google.com" target="_blank" style="color:rgb(164, 235, 122); font-size:22px;" class="iconBox">
+    <i class="fas fa-map-marker-alt"></i>
+  </a>
+  
+    
+  </div>
+
+  <p style="font-size:14px; color:#777;">
+    © 2026 Luxury Beauty Shop. All rights reserved.
+  </p>
+
+</footer>
+
+<script>
+  
+  
+  let html = `
+<button onclick="closeModal()">TEST CLOSE</button>
+`;
+let products = JSON.parse(localStorage.getItem('products')) || [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+updateCart();
+displayProducts();
+
+// LOGIN SYSTEM
+function login(){
+let u=document.getElementById('username').value;
+let p=document.getElementById('password').value;
+
+if(u==='admin' && p==='1234'){
+localStorage.setItem('admin','true');
+document.getElementById('loginBox').style.display='none';
+document.getElementById('adminPanel').style.display='block';
+}else{
+alert('Wrong login');
+}
+}
+
+// AUTO LOGIN
+if(localStorage.getItem('admin')==='true'){
+document.getElementById('loginBox').style.display='none';
+document.getElementById('adminPanel').style.display='block';
+}
+
+function logout(){
+localStorage.removeItem('admin');
+location.reload();
+}
+
+function addProduct(){
+let name=document.getElementById('name').value;
+let price=document.getElementById('price').value;
+let image=document.getElementById('image').value;
+let desc=document.getElementById('desc').value;
+
+products.push({name,price,image,desc});
+localStorage.setItem('products',JSON.stringify(products));
+displayProducts();
+}
+
+function displayProducts(){
+let html='';
+products.forEach((p,i)=>{
+html+=`<div class="card">
+<img src="${p.image}">
+<h4>${p.name}</h4>
+<p class="price">₹${p.price}</p>
+<button onclick="showDetail(${i})">View</button>
+<button onclick="addToCart(${i})">Add to Cart</button>
+${localStorage.getItem('admin')==='true' ? `<button onclick="deleteProduct(${i})">Delete</button>` : ''}
+</div>`;
+});
+document.getElementById('productList').innerHTML=html;
+}
+function deleteProduct(i){
+  if(confirm('Delete this product?')){
+    products.splice(i,1);
+    localStorage.setItem('products', JSON.stringify(products));
+    displayProducts();
+  }
+}
+function showDetail(i){
+let p=products[i];
+document.getElementById('modal').style.display='flex';
+document.getElementById('modalContent').innerHTML=`
+<img src="${p.image}" style="width:100%; max-height:300px; object-fit:contain">
+<h3>${p.name}</h3>
+<p>${p.desc}</p>
+<h3>₹${p.price}</h3>
+<button onclick="addToCart(${i})">Add to Cart</button>
+<button onclick="buyNow('${p.name}')">Buy Now</button><br><br>
+<button onclick="closeModal()">Close</button>`;
+}
+
+function closeModal(){document.getElementById('modal').style.display='none';}
+
+function addToCart(i){
+  let item = products[i];
+
+  let existing = cart.find(p => p.name === item.name);
+
+  if(existing){
+    existing.qty += 1;
+  }else{
+    cart.push({...item, qty:1});
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+}
+function updateCart(){
+  document.getElementById('cartCount').innerText = cart.length;
+   
+}
+
+function viewCart(){
+
+  let modal = document.getElementById("modal");
+  modal.style.display = "flex";
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  let html = `
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Your Cart</h2>
+    <button onclick="closeModal()" style="
+      background:none;
+      border:none;
+      font-size:22px;
+      cursor:pointer;
+    ">✕</button>
+  </div>
+  `;
+
+  if(cart.length === 0){
+    html += "<p>Your cart is empty 🛒</p>";
+    document.getElementById('modalContent').innerHTML = html;
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((p,i)=>{
+
+    let qty = p.qty || 1;
+    let subtotal = p.price * qty;
+    total += subtotal;
+
+    html += `
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin:10px 0;
+      padding:10px;
+      border-radius:12px;
+      background:#fff;
+       box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    ">
+      
+      <div style="display:flex; gap:10px; align-items:center;">
+        <img src="${p.image}" style="
+          width:60px;
+          height:60px;
+          object-fit:cover;
+          border-radius:8px;
+           box-shadow:0 2px 10px rgba(0,0,0,0.05);
+        ">
+
+        <div>
+          <h4 style="margin:0">${p.name}</h4>
+          <p style="margin:0;color:#888">₹${p.price}</p>
+
+          <div style="margin-top:5px;">
+            <button onclick="changeQty(${i},-1)">-</button>
+            ${qty}
+            <button onclick="changeQty(${i},1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="removeFromCart(${i})" style="
+        background:red;
+        color:white;
+        border:none;
+        padding:6px 10px;
+        border-radius:6px;
+      ">✕</button>
+
+    </div>
+    `;
+  });
+
+  html += `<h3>Total: ₹${total}</h3>`;
+
+  html += `
+  <button onclick="checkout(${total})" style="
+    width:100%;
+    padding:12px;
+    background:#ff6f91;
+    color:white;
+    border:none;
+    border-radius:10px;
+  ">
+  Checkout
+  </button>
+  `;
+
+  html += `
+<button onclick="closeModal()" style="
+  margin-top:10px;
+  padding:12px;
+  width:100%;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  color:#333;
+  border:none;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+"
+onmouseover="this.style.opacity='0.85'"
+onmouseout="this.style.opacity='1'"
+>
+Continue Shopping
+</button>
+`;
+
+  document.getElementById('modalContent').innerHTML = html;
+}
+
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+window.onclick = function(e){
+  let modal = document.getElementById("modal");
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
+}
+function removeFromCart(i){
+  cart.splice(i,1);
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  updateCart();
+  viewCart();
+   
+}
+function changeQty(i, change){
+  cart[i].qty += change;
+
+  if(cart[i].qty <= 0){
+    cart.splice(i,1);
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+  viewCart();
+  
+}
+function checkout(total){
+
+let html = `
+<h3>Checkout</h3>
+
+<input id="cname" placeholder="Your Name" style="width:100%;padding:8px;margin:5px 0;">
+<input id="cphone" placeholder="Phone Number" style="width:100%;padding:8px;margin:5px 0;">
+<input id="caddress" placeholder="Address" style="width:100%;padding:8px;margin:5px 0;">
+
+<br>
+
+<button onclick="placeOrder(${total})" style="
+  width:100%;
+  padding:10px;
+  background:#ff6f91;
+  color:white;
+  border:none;
+  border-radius:8px;
+">
+Place Order
+</button>
+
+<br><br>
+
+<button onclick="viewCart()">Back</button>
+`;
+
+document.getElementById('modalContent').innerHTML = html;
+ 
+}
+function placeOrder(total){
+
+let name = document.getElementById('cname').value;
+let phone = document.getElementById('cphone').value;
+let address = document.getElementById('caddress').value;
+
+if(!name || !phone || !address){
+  alert("Please fill all details");
+  return;
+}
+
+// 🛒 build product list
+let orderDetails = "Order Details:%0A";
+
+cart.forEach((p,i)=>{
+  orderDetails += `${i+1}. ${p.name} - ₹${p.price}%0A`;
+});
+
+let msg = `
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+${orderDetails}
+
+Total: ₹${total}
+`;
+
+let businessNumber = "917986005320";
+
+window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+
+// clear cart after order
+cart = [];
+localStorage.setItem('cart', JSON.stringify(cart));
+updateCart();
+closeModal();
+}
+function buyNow(name){
+let phone='917986005320';
+let msg=`I want to buy ${name}`;
+window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+</script>
+
+</body>
+</html>

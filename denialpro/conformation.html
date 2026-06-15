@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Confirmed - ToyCarX</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">Bolzaano ToyCarX</div>
+  <div class="theme-toggle" id="themeToggle">🌙</div>
+</nav>
+
+<section style="text-align:center; padding:60px 20px; ">
+<div class="order">
+  <h1 style="font-size:40px;">🎉 Order Confirmed!</h1>
+  <p>Your toy car is on the way 🚗</p>
+
+  <div class="card" id="orderDetails" style="margin:30px auto; max-width:300px;"></div>
+
+  <h3 id="orderTotal"></h3>
+
+  <a href="index.html" class="btn">Back to Home</a>
+</div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const order = JSON.parse(localStorage.getItem("lastOrder"));
+
+  if(order){
+    document.getElementById("orderDetails").innerHTML = `
+      <h3>${order.name}</h3>
+      <p>₹${order.price}</p>
+    `;
+
+    document.getElementById("orderTotal").innerText =
+      "Total Paid: ₹" + order.price;
+  }
+
+});
+</script>
+<script src="cart.js"></script>
+
+</body>
+</html>

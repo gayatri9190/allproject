@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ToyCarX - Shop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">BolzaanoCarX</div>
+  <ul>
+    <li><a href="cart.html">Cart</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="theme-toggle" id="themeToggle">🌙</div>
+</nav>
+
+<h2 class="title">Our Cars</h2>
+
+<div class="products">
+  <div class="card">
+    <img src="images/car3.png" data-loaded="true" class="product-img">
+    <h3>Ferrari Model</h3>
+    <p>₹300</p>
+    <button onclick="addToCart('Ferrari Model', 300,'images/car3.png')" class="btn">Add to Cart</button>
+    <button onclick="buyNow('Ferrari Model', 300)" class="btn buy-btn">
+  Buy Now
+</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.ctfassets.net/ygh1w8dxx9fq/1gyGD7wsZ9YxA1bkOUi4c3/748c1f700f20bb52c198d0a483e07873/9.jpg" data-loaded="true" class="product-img">
+    <h3>Lamborghini Model</h3>
+    <p>₹500</p>
+    <button onclick="addToCart('Lamborghini Model', 500,
+    `https://images.ctfassets.net/ygh1w8dxx9fq/1gyGD7wsZ9YxA1bkOUi4c3/748c1f700f20bb52c198d0a483e07873/9.jpg`)" class="btn">Add to Cart</button>
+     <button onclick="buyNow('Ferrari Model', 500)" class="btn buy-btn">
+  Buy Now
+</button>
+  </div>
+
+  <div class="card">
+   
+<img src="images/car.png" class="product-img">
+    <h3>Bugatti Model</h3>
+    <p>₹499</p>
+    <button onclick="addToCart('Bugatti Model', 499,'images/car.png')" class="btn">Add to Cart</button>
+     <button onclick="buyNow('Ferrari Model', 499)" class="btn buy-btn">
+  Buy Now
+</button>
+  </div>
+</div>
+
+<script src="cart.js"></script>
+<footer>© 2026 BolzaanoCarX Store
+    <br>
+    Privacy Police| And Terms<BR>
+        Quality You Can Trust
+</footer>
+
+</body>
+</html>
