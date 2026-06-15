@@ -1,0 +1,157 @@
+*{
+   margin: 0;
+   padding: 0;
+}
+body {
+   background-image:url(360_F_391461057_5P0BOWl4lY442Zoo9rzEeJU0S2c1WDZR.jpg) ;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+    background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   flex-direction: column;
+   padding: 20px;
+   text-align: center;
+}
+
+.top_ele {
+
+   color: #63b0e7;
+   font-size: 90px;
+   text-align: center;
+   margin-left: 60px;
+   padding-right: 40px;
+   cursor: pointer;
+}
+
+.middle_ele {
+   color: white;
+   cursor: pointer;
+   font-size: 40px;
+   border: 2px solid black;
+   border-radius: 20px;
+   padding: 10px;
+   box-shadow: 0 0 1rem rgb(252, 250, 250);
+
+}
+
+div {
+   color: white;
+   cursor: pointer;
+   border: 2px solid black;
+   padding: 15px;
+   border-radius: 20px;
+   margin: 20px;
+   box-shadow: 0 0 1rem rgb(247, 243, 243);
+}
+
+.lower_ele {
+   color: white;
+   cursor: pointer;
+   font-size: 50px;
+   border: 2px solid black;
+   border-radius: 20px;
+   padding: 20px;
+   justify-content: center;
+   align-items: center;
+   margin-left: 1rem;
+   margin-right: 1rem;
+   box-shadow: 0 0 1rem rgb(252, 251, 251);
+   padding-left: 26rem;
+}
+
+.events {
+   font-size: 35px;
+   color: white;
+
+}
+
+.btn1 {
+   cursor: pointer;
+   font-size: 40px;
+   font-weight: 60px;
+   border-radius: 10px;
+   
+   margin-left: 45rem;
+   box-shadow: 0 0 2rem rgb(243, 240, 240);
+}
+.btn1:hover {
+   background-color: rgb(243, 240, 240);
+   color: black;
+   box-shadow: 0 0 2rem rgb(243, 240, 240);
+}
+/* 📱 MOBILE RESPONSIVE (no design change on desktop) */
+@media (max-width: 768px) {
+
+   body {
+      flex-direction: column;
+      padding: 20px;
+   }
+
+   .top_ele {
+      font-size: 50px;
+      margin-left: 0;
+      padding-right: 0;
+   }
+
+   .middle_ele {
+      font-size: 28px;
+      width: 90%;
+      margin: 15px auto;
+   }
+
+   div {
+      width: 90%;
+      margin: 15px auto;
+   }
+
+   .lower_ele {
+      font-size: 32px;
+      padding-left: 0; /* IMPORTANT fix */
+      width: 90%;
+      text-align: center;
+   }
+
+   .events {
+      font-size: 24px;
+   }
+
+   .btn1 {
+      font-size: 24px;
+      margin-left: 0;  /* remove 45rem */
+      display: block;
+      margin: 20px auto;
+   }
+}
+
+
+/* 📱 SMALL MOBILE */
+@media (max-width: 480px) {
+
+   .top_ele {
+      font-size: 35px;
+   }
+
+   .middle_ele {
+      font-size: 22px;
+   }
+
+   .lower_ele {
+      font-size: 26px;
+   }
+
+   .events {
+      font-size: 20px;
+   }
+
+   .btn1 {
+      font-size: 20px;
+      width: 100%;
+   }
+}
