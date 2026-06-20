@@ -9,8 +9,9 @@
 </head>
 <style>
     body{
+        
         margin: 0;
-        padding: 0;
+        padding: 10px;
         background: #fff0f5;
     }
     header{
@@ -23,6 +24,7 @@
 
     }
     nav a{
+       
         font-size: 20px;
         margin:  20px;
         color:white;
@@ -50,6 +52,8 @@
         border-radius: 10px 10px 10px 10px;
     }
     button{
+       
+        font-weight: bold;
         margin-bottom: 10px;
         padding: 10px;
         margin-top: 20px;
@@ -71,43 +75,129 @@
   backdrop-filter: blur(5px);
 }
 .hero{
+   
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 font-size: 25px;
 font-weight: 400;
 font-style: italic;
 }
 .hero ul{
-    font-size: 15px;
+    font-size: 20px;
 }
 .hero p1{
     font-size: 15px;
 }
+
+img{
+    margin: 10px;
+    width: 24vw;
+    height: 30vh;
+    border:3px solid rgb(206, 51, 136); 
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 1px 2px 1px 2px rgb(236, 135, 186);
+}
+
+.pic1{
+    position: relative;
+    width: 100%;
+}
+.pic1 img{
+    padding: 0;
+    margin: 0;
+    height: 450px;
+    width: 100%;
+    
+}
+.pic1 button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+.search-box input{position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+     border:3px solid rgb(206, 51, 136); 
+    border-radius: 12px 12px 12px 12px;
+font-size: 16px;
+}
+.search-box span{
+    position: absolute;
+    top: 48.6%;
+    right: 40%;
+    transform: translate(-50%);
+    font-size: 16px;
+}
+.services{
+    display: flex;
+   flex-wrap: wrap;
+  
+}
+.service{
+    text-align: center;
+    color: rgb(206, 51, 136) ;
+}
+
 </style>
+</html>
 <body>
 <header>
     <nav>
-        <a href="#Home">Home</a>
+        
+        <a href="#Home">Home </a>
         <a href="#Contact">Contect</a>
         <a href="#About Us">About Us</a>
         <a href="#services">Services</a>
     </nav>
 </header>
 <div class="hero">Home
-    
+    <div class="pic1">
+
+      <img class="pic" src ="images/ho.jpg">
+      <div class="search-box">
+        <input type="text" placeholder="Search...."><span>🔍</span>
+      </div>
+     
+    <button  type="submit">Booking now</button>
+       </div>   
+        
 </div>
 <div class="hero">Services</div>
+<div class="services">
+<div class="service">
+ <img  src="images/htal.jpeg" alt="h1" >
+ <h2>Free Wi-Fi</h2>
+</div>
+<div class="service">
+ <img  src="images/hal.jpeg" alt="h2"> 
+ <h2>Swimming Pool</h2>
+</div>
+<div class="service">
+<img  src="images/h1.jpeg" alt="h3">
+<h2>Luxury Room</h2>
+</div>
+<div class="service">
+<img  src="images/h4.jpeg" alt="h5">
+<h2>Dinning Table🍽</h2>
+</div>
+<div class="service">
+<img  src="images/h.jpeg" alt="h4">
+<h2>Big Hall</h2>
+</div> 
+ </div>
 <div class="hero">About us
      <ul>
-    <li>Providing exceptional hospitality and memorable guest expriences.</li>
-    <li>Your comfort, our priority -available 24/7.</li>
-    <li>Luxury, comfort and excellent service under one roof.</li>
-    <li>Creating unforgettable stays for every guest.</li>
-    <li>Thankyou  for choosing us -We look forword to welcoming you again.</li>
+    <li>Providing exceptional hospitality and memorable guest expriences.✨</li>
+    <li>Your comfort, our priority -available 24/7.⌛</li>
+    <li>Luxury, comfort and excellent service under one roof.🙆‍♂️</li>
+    <li>Creating unforgettable stays for every guest.✌</li>
+    <li>Thankyou  for choosing us -We look forword to welcoming you again.🤝</li>
     </ul>
 </div>
 <div class="hero">Contect<br>
-    <p1>Ph. 79xxxx xxxx</p1><br>
-    <p1>Email : gkxxxxxx@gmail.com</p1>
+    <p1>Ph. 79xxxx xxxx📞</p1><br>
+    <p1>Email : gkxxxxxx@gmail.com📧</p1>
 </div>
 <div >
 <textarea placeholder="write your feedback here.." rows="4" cols="30"></textarea>
